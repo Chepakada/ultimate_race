@@ -120,24 +120,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\prash\\.nuget\\packages\\": {}
+    "C:\\Users\\Obeme\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\prash\\OneDrive\\Desktop\\sem_3\\cse_210\\cse210-student-articulate-csharp\\Unit06\\Unit06.csproj",
+      "projectUniqueName": "C:\\Users\\Obeme\\Documents\\Fall 2022 BYUI Classes\\f22 programming class\\Final Project CarRace\\obediah\\Unit06.csproj",
       "projectName": "Unit06",
-      "projectPath": "c:\\Users\\prash\\OneDrive\\Desktop\\sem_3\\cse_210\\cse210-student-articulate-csharp\\Unit06\\Unit06.csproj",
-      "packagesPath": "C:\\Users\\prash\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\prash\\OneDrive\\Desktop\\sem_3\\cse_210\\cse210-student-articulate-csharp\\Unit06\\obj\\",
+      "projectPath": "C:\\Users\\Obeme\\Documents\\Fall 2022 BYUI Classes\\f22 programming class\\Final Project CarRace\\obediah\\Unit06.csproj",
+      "packagesPath": "C:\\Users\\Obeme\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Obeme\\Documents\\Fall 2022 BYUI Classes\\f22 programming class\\Final Project CarRace\\obediah\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\prash\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Obeme\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
