@@ -120,26 +120,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Obeme\\.nuget\\packages\\": {}
+    "C:\\Users\\prash\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Obeme\\Documents\\Fall 2022 BYUI Classes\\f22 programming class\\Final Project CarRace\\obediah\\Unit06.csproj",
+      "projectUniqueName": "C:\\Users\\prash\\OneDrive\\Desktop\\car_race\\car_race\\Unit06.csproj",
       "projectName": "Unit06",
-      "projectPath": "C:\\Users\\Obeme\\Documents\\Fall 2022 BYUI Classes\\f22 programming class\\Final Project CarRace\\obediah\\Unit06.csproj",
-      "packagesPath": "C:\\Users\\Obeme\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Obeme\\Documents\\Fall 2022 BYUI Classes\\f22 programming class\\Final Project CarRace\\obediah\\obj\\",
+      "projectPath": "C:\\Users\\prash\\OneDrive\\Desktop\\car_race\\car_race\\Unit06.csproj",
+      "packagesPath": "C:\\Users\\prash\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\prash\\OneDrive\\Desktop\\car_race\\car_race\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Obeme\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\prash\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

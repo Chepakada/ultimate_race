@@ -21,6 +21,7 @@ namespace Unit06.Game.Directing
         {
         }
 
+        
         public void PrepareScene(string scene, Cast cast, Script script)
         {
             if (scene == Constants.NEW_GAME)
@@ -46,7 +47,7 @@ namespace Unit06.Game.Directing
         }
 
         private void PrepareNewGame(Cast cast, Script script)
-        {
+        {   AddBackground(cast);
             AddStats(cast);
             AddLevel(cast);
             AddScore(cast);
@@ -77,6 +78,7 @@ namespace Unit06.Game.Directing
         private void PrepareNextLevel(Cast cast, Script script)
         {
             AddBall(cast);
+            AddBackground(cast);
             AddBricks(cast);
             AddRacket(cast);
             AddDialog(cast, Constants.PREP_TO_LAUNCH);
@@ -95,6 +97,7 @@ namespace Unit06.Game.Directing
         private void PrepareTryAgain(Cast cast, Script script)
         {
             AddBall(cast);
+            AddBackground(cast);
             AddRacket(cast);
             AddDialog(cast, Constants.PREP_TO_LAUNCH);
 
@@ -125,6 +128,7 @@ namespace Unit06.Game.Directing
         private void PrepareGameOver(Cast cast, Script script)
         {
             AddBall(cast);
+            AddBackground(cast);
             AddRacket(cast);
             AddDialog(cast, Constants.WAS_GOOD_GAME);
 
@@ -170,8 +174,8 @@ namespace Unit06.Game.Directing
             for (int r = 0; r < rows.Count; r++)
             {
                 for (int c = 0; c < rows[r].Count; c++)
-                {
-                    int x = Constants.FIELD_LEFT + c * Constants.BRICK_WIDTH;
+                {   
+                    int x = Constants.FIELD_RIGHT/3 +20+ c * Constants.BRICK_WIDTH;
                     int y = Constants.FIELD_TOP + r * Constants.BRICK_HEIGHT;
 
                     string color = rows[r][c][0].ToString();
@@ -181,7 +185,7 @@ namespace Unit06.Game.Directing
                     Point position = new Point(x, y);
                     Point size = new Point(Constants.BRICK_WIDTH, Constants.BRICK_HEIGHT);
                     Point velocity = new Point(0, 0);
-                    List<string> images = Constants.BRICK_IMAGES[color].GetRange(0, frames);
+                    List<string> images = Constants.Car_Images[color].GetRange(1, frames);
 
                     Body body = new Body(position, size, velocity);
                     Animation animation = new Animation(images, Constants.BRICK_RATE, 1);
@@ -191,7 +195,23 @@ namespace Unit06.Game.Directing
                 }
             }
         }
+        private void AddBackground(Cast cast){
+            cast.ClearActors(Constants.BACKGROUND_GROUP);
+        
+            int x = 0;
+            int y = 0;
+        
+            Point position = new Point(x, y);
+            Point size = new Point(Constants.Background_Height, Constants.Background_width);
+            Point velocity = new Point(5, 0);
+        
+            Body body = new Body(position, size, velocity);
+            Animation animation = new Animation(Constants.BACKGROUND_IMAGES, Constants.RACKET_RATE, 0);
+            Background background = new Background(body, animation, false);
+        
+            cast.AddActor(Constants.BACKGROUND_GROUP, background);
 
+        }
         private void AddDialog(Cast cast, string message)
         {
             cast.ClearActors(Constants.DIALOG_GROUP);
@@ -276,8 +296,11 @@ namespace Unit06.Game.Directing
                     string row = reader.ReadLine();
                     List<string> columns = new List<string>(row.Split(',', StringSplitOptions.TrimEntries));
                     data.Add(columns);
+
                 }
             }
+            
+             
             return data;
         }
 
@@ -297,12 +320,14 @@ namespace Unit06.Game.Directing
         }
 
         private void AddOutputActions(Script script)
-        {
+        {   script.AddAction(Constants.OUTPUT, new DrawBackGroundAction(VideoService));
             script.AddAction(Constants.OUTPUT, new StartDrawingAction(VideoService));
+            script.AddAction(Constants.OUTPUT, new DrawRacketAction(VideoService));
             script.AddAction(Constants.OUTPUT, new DrawHudAction(VideoService));
             script.AddAction(Constants.OUTPUT, new DrawBallAction(VideoService));
             script.AddAction(Constants.OUTPUT, new DrawBricksAction(VideoService));
-            script.AddAction(Constants.OUTPUT, new DrawRacketAction(VideoService));
+            
+            
             script.AddAction(Constants.OUTPUT, new DrawDialogAction(VideoService));
             script.AddAction(Constants.OUTPUT, new EndDrawingAction(VideoService));
         }

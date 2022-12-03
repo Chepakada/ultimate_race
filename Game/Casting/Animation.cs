@@ -87,5 +87,11 @@ namespace Unit06.Game.Casting
 
             return image; 
         }
+        public Image NextImageForCars(){
+            string filename = _images[_index];
+            Image image = new Image(filename);
+            return image;
+
+        }
     }
 }

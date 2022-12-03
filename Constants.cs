@@ -11,12 +11,12 @@ namespace Unit06
         // ----------------------------------------------------------------------------------------- 
 
         // GAME
-        public static string GAME_NAME = "Batter";
+        public static string GAME_NAME = "CAR RACE";
         public static int FRAME_RATE = 60;
 
         // SCREEN
-        public static int SCREEN_WIDTH = 1040;
-        public static int SCREEN_HEIGHT = 680;
+        public static int SCREEN_WIDTH = 1880; //1080
+        public static int SCREEN_HEIGHT = 840; //680
         public static int CENTER_X = SCREEN_WIDTH / 2;
         public static int CENTER_Y = SCREEN_HEIGHT / 2;
 
@@ -61,7 +61,7 @@ namespace Unit06
         public static string GAME_OVER = "game_over";
 
         // LEVELS
-        public static string LEVEL_FILE = "Assets/Data/level-{0:000}.txt";
+        public static string LEVEL_FILE = "Assets/Data/level-001.txt";    //{0:000}
         public static int BASE_LEVELS = 5;
 
         // ----------------------------------------------------------------------------------------- 
@@ -93,7 +93,7 @@ namespace Unit06
         public static string SCORE_GROUP = "score";
         public static string LEVEL_FORMAT = "LEVEL: {0}";
         public static string LIVES_FORMAT = "LIVES: {0}";
-        public static string SCORE_FORMAT = "SCORE: {0}";
+        public static string SCORE_FORMAT = "Time: {0}";
 
         // BALL
         public static string BALL_GROUP = "balls";
@@ -107,18 +107,27 @@ namespace Unit06
         
         public static List<string> RACKET_IMAGES
             = new List<string>() {
-                "Assets/Images/100.png",
-                "Assets/Images/101.png",
-                "Assets/Images/102.png"
+                "Assets/images/Topdown_vehicle_sprites_pack/Police_animation/1.png",
+                "Assets/images/Topdown_vehicle_sprites_pack/Police_animation/2.png",
+                "Assets/images/Topdown_vehicle_sprites_pack/Police_animation/3.png"
             };
+            
+        public static int Background_width = 1880;
+        public static int Background_Height = 880;
+        public static string BACKGROUND_GROUP = "backgrounds";
+        public static List<string> BACKGROUND_IMAGES 
+            = new List<string>(){
+                "Assets/images/Background.png"
+            };
+        
 
-        public static int RACKET_WIDTH = 106;
-        public static int RACKET_HEIGHT = 28;
+        public static int RACKET_WIDTH = 100;
+        public static int RACKET_HEIGHT = 210;
         public static int RACKET_RATE = 6;
         public static int RACKET_VELOCITY = 7;
 
         // BRICK
-        public static string BRICK_GROUP = "bricks";
+        public static string BRICK_GROUP = "cars";
         
         public static Dictionary<string, List<string>> BRICK_IMAGES
             = new Dictionary<string, List<string>>() {
@@ -168,8 +177,19 @@ namespace Unit06
                 } }
         };
 
-        public static int BRICK_WIDTH = 80;
-        public static int BRICK_HEIGHT = 28;
+        public static Dictionary<string, List<string>> Car_Images = new Dictionary<string, List<string>>(){
+            {"c", new List<string>(){
+                "Assets/images/Topdown_vehicle_sprites_pack/Ambulance.png",
+                "Assets/images/Topdown_vehicle_sprites_pack/Black_viper.png",
+                "Assets/images/Topdown_vehicle_sprites_pack/Car.png",
+                "Assets/images/Topdown_vehicle_sprites_pack/Mini_truck.png",
+                "Assets/images/Topdown_vehicle_sprites_pack/Black_viper.png",
+                "Assets/images/Topdown_vehicle_sprites_pack/taxi.png"
+            }}
+        };
+
+        public static int BRICK_WIDTH = 100;
+        public static int BRICK_HEIGHT = 210;
         public static double BRICK_DELAY = 0.5;
         public static int BRICK_RATE = 4;
         public static int BRICK_POINTS = 50;

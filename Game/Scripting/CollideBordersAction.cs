@@ -28,33 +28,35 @@ namespace Unit06.Game.Scripting
             if (x < Constants.FIELD_LEFT)
             {
                 ball.BounceX();
-                _audioService.PlaySound(bounceSound);
+                //_audioService.PlaySound(bounceSound);
             }
             else if (x >= Constants.FIELD_RIGHT - Constants.BALL_WIDTH)
             {
                 ball.BounceX();
-                _audioService.PlaySound(bounceSound);
+                //_audioService.PlaySound(bounceSound);
             }
 
             if (y < Constants.FIELD_TOP)
             {
                 ball.BounceY();
-                _audioService.PlaySound(bounceSound);
+                //_audioService.PlaySound(bounceSound);
             }
             else if (y >= Constants.FIELD_BOTTOM - Constants.BALL_WIDTH)
             {
-                Stats stats = (Stats)cast.GetFirstActor(Constants.STATS_GROUP);
-                stats.RemoveLife();
+                ball.BounceY();
+                
+                // Stats stats = (Stats)cast.GetFirstActor(Constants.STATS_GROUP);
+                // stats.RemoveLife();
 
-                if (stats.GetLives() > 0)
-                {
-                    callback.OnNext(Constants.TRY_AGAIN);
-                }
-                else
-                {
-                    callback.OnNext(Constants.GAME_OVER);
-                    _audioService.PlaySound(overSound);
-                }
+                // if (stats.GetLives() > 0)
+                // {
+                //     callback.OnNext(Constants.TRY_AGAIN);
+                // }
+                // else
+                // {
+                //     callback.OnNext(Constants.GAME_OVER);
+                //     _audioService.PlaySound(overSound);
+                // }
             }
         }
     }
