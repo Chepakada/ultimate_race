@@ -32,7 +32,7 @@ namespace Unit06.Game.Scripting
 
                 Animation animation = brick.GetAnimation();
                 Image image = animation.NextImageForCars();
-                Point position = body.GetPosition();
+                Point position= body.GetPosition();
                 _videoService.DrawImage(image, position);
             }
         }

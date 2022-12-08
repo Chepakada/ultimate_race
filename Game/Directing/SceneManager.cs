@@ -47,7 +47,8 @@ namespace Unit06.Game.Directing
         }
 
         private void PrepareNewGame(Cast cast, Script script)
-        {   AddBackground(cast);
+        {   AddBackground2(cast);
+            AddBackground(cast);
             AddStats(cast);
             AddLevel(cast);
             AddScore(cast);
@@ -79,6 +80,7 @@ namespace Unit06.Game.Directing
         {
             AddBall(cast);
             AddBackground(cast);
+            AddBackground2(cast);
             AddBricks(cast);
             AddRacket(cast);
             AddDialog(cast, Constants.PREP_TO_LAUNCH);
@@ -98,6 +100,7 @@ namespace Unit06.Game.Directing
         {
             AddBall(cast);
             AddBackground(cast);
+            AddBackground2(cast);
             AddRacket(cast);
             AddDialog(cast, Constants.PREP_TO_LAUNCH);
 
@@ -129,6 +132,7 @@ namespace Unit06.Game.Directing
         {
             AddBall(cast);
             AddBackground(cast);
+            AddBackground2(cast);
             AddRacket(cast);
             AddDialog(cast, Constants.WAS_GOOD_GAME);
 
@@ -176,14 +180,16 @@ namespace Unit06.Game.Directing
             List<string> images = Constants.Car_Images["c"].GetRange(1,4);
             foreach (string image in images){
             int location = _random.Next(0,4);
-            int x = Constants.FIELD_LEFT + 200 + _random.Next(0, 4)*Constants.BRICK_WIDTH;
-            int y = Constants.FIELD_TOP + 100;
+            int x = Constants.FIELD_LEFT + 400 + _random.Next(0, 4)*2*Constants.BRICK_WIDTH;
+            int y = Constants.FIELD_TOP + 50+ _random.Next(0,4)*Constants.BRICK_HEIGHT;
             Point position = new Point(x, y);
+            
             Point size = new Point(Constants.BRICK_WIDTH, Constants.BRICK_HEIGHT);
             Point velocity = new Point(0, 3);
 
             Body body = new Body(position, size, velocity);
             Animation animation = new Animation(images, Constants.BRICK_RATE, 1, null , null);
+            position = body.GetPosition();
             int points = Constants.BRICK_POINTS;
             Brick brick = new Brick(body, animation, points, velocity, false);
             cast.AddActor(Constants.BRICK_GROUP, brick);}
@@ -219,7 +225,25 @@ namespace Unit06.Game.Directing
         
             Point position = new Point(x, y);
             Point size = new Point(Constants.Background_Height, Constants.Background_width);
-            Point velocity = new Point(5, 0);
+            Point velocity = new Point(0, 5);
+        
+            Body body = new Body(position, size, velocity);
+            Animation animation = new Animation(Constants.BACKGROUND_IMAGES, Constants.RACKET_RATE, 1, velocity, position);
+            Background background = new Background(body, animation, false);
+        
+            cast.AddActor(Constants.BACKGROUND_GROUP, background);
+            
+
+        }
+         private void AddBackground2(Cast cast){
+            cast.ClearActors(Constants.BACKGROUND_GROUP);
+        
+            int x = 0;
+            int y = 500;
+        
+            Point position = new Point(x, y);
+            Point size = new Point(Constants.Background_Height, Constants.Background_width);
+            Point velocity = new Point(0, 5);
         
             Body body = new Body(position, size, velocity);
             Animation animation = new Animation(Constants.BACKGROUND_IMAGES, Constants.RACKET_RATE, 1, velocity, position);
@@ -360,9 +384,11 @@ namespace Unit06.Game.Directing
         }
 
         private void AddUpdateActions(Script script)
-        {
+        {   
             script.AddAction(Constants.UPDATE, new MoveBallAction());
+            script.AddAction(Constants.UPDATE, new MoveBrickAction());
             script.AddAction(Constants.UPDATE, new MoveRacketAction());
+            script.AddAction(Constants.UPDATE, new MoveSidesAction());
             script.AddAction(Constants.UPDATE, new CollideBordersAction(PhysicsService, AudioService));
             script.AddAction(Constants.UPDATE, new CollideBrickAction(PhysicsService, AudioService));
             script.AddAction(Constants.UPDATE, new CollideRacketAction(PhysicsService, AudioService));

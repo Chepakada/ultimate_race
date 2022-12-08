@@ -15,8 +15,8 @@ namespace Unit06.Game.Casting
         private int _index;
         private int _frame;
         private DateTime _startTime;
-        private Point _position= null;
-        private Point _velocity= null;
+        private Point _position= new Point(0,0);
+        private Point _velocity= new Point(0,0);
 
 
         /// <summary>
@@ -69,7 +69,9 @@ namespace Unit06.Game.Casting
         {
             string filename = _images[_index];
             Image image = new Image(filename);
-            
+            //Point position1 = new Point(0,0);
+            //position1 = _position;
+             
             DateTime currentTime = DateTime.Now;
             TimeSpan elapsedTime = currentTime.Subtract(_startTime);
 
@@ -81,9 +83,13 @@ namespace Unit06.Game.Casting
                 {
                     _index = (_index + 1) % _images.Count;
                     _frame = 0;
-                }
-                filename = _images[_index];
-                image = new Image(filename);
+                } 
+            //     if (position1.GetY() < Constants.SCREEN_HEIGHT){
+
+            //     filename = _images[_index];
+            //     image = new Image(filename);
+            // }
+                
 
                 if (_index >= _images.Count - 1)
                 {
@@ -101,15 +107,18 @@ namespace Unit06.Game.Casting
             //  Point newVelocity = new Point(0,0);
             //  newVelocity = _position.Add(_velocity);
             // _body.SetVelocity(newVelocity);
+            
             return image;
 
         }
         public Point MoveNext_falling()
-        {
-            int x = _position.GetX();
+        {   Point position2 = new Point(0,0);
+            position2 = _position;
+            int x = position2.GetX();
             //int x = ((_position.GetX() + _velocity.GetX()) + maxX) % maxX;
-            int y = ((_position.GetY() + _velocity.GetY()) + Constants.Background_Height) % Constants.Background_width;
-            return  new Point(x, y);
+            int y = ((position2.GetY() + _velocity.GetY()) + Constants.Background_Height) % Constants.Background_width;
+            Point point = new Point(x,y);
+            return point;
         }
     }
-}
+}       
