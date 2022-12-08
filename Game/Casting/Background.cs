@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 namespace Unit06.Game.Casting
 {
     /// <summary>
@@ -7,7 +9,8 @@ namespace Unit06.Game.Casting
     {
         private Body _body;
         private Animation _animation;
-        
+        private static Random _random = new Random();
+    
         /// <summary>
         /// Constructs a new instance of Actor.
         /// </summary>
@@ -25,11 +28,13 @@ namespace Unit06.Game.Casting
         {
             return _animation;
         }
+        
 
         /// <summary>
         /// Gets the body.
         /// </summary>
         /// <returns>The body.</returns>
+       
         public Body GetBody()
         {
             return _body;
@@ -60,7 +65,7 @@ namespace Unit06.Game.Casting
         /// </summary>
         public void SwingRight()
         {
-            Point velocity = new Point(Constants.RACKET_VELOCITY, 0);
+            Point velocity = new Point(0,Constants.RACKET_VELOCITY);
             _body.SetVelocity(velocity);
         }
 

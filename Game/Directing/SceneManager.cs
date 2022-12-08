@@ -170,30 +170,46 @@ namespace Unit06.Game.Directing
             int level = stats.GetLevel() % Constants.BASE_LEVELS;
             string filename = string.Format(Constants.LEVEL_FILE, level);
             List<List<string>> rows = LoadLevel(filename);
+            
+            Random _random = new Random();
+            
+            List<string> images = Constants.Car_Images["c"].GetRange(1,4);
+            foreach (string image in images){
+            int location = _random.Next(0,4);
+            int x = Constants.FIELD_LEFT + 200 + _random.Next(0, 4)*Constants.BRICK_WIDTH;
+            int y = Constants.FIELD_TOP + 100;
+            Point position = new Point(x, y);
+            Point size = new Point(Constants.BRICK_WIDTH, Constants.BRICK_HEIGHT);
+            Point velocity = new Point(0, 3);
 
-            for (int r = 0; r < rows.Count; r++)
-            {
-                for (int c = 0; c < rows[r].Count; c++)
-                {   
-                    int x = Constants.FIELD_RIGHT/3 +20+ c * Constants.BRICK_WIDTH;
-                    int y = Constants.FIELD_TOP + r * Constants.BRICK_HEIGHT;
+            Body body = new Body(position, size, velocity);
+            Animation animation = new Animation(images, Constants.BRICK_RATE, 1, null , null);
+            int points = Constants.BRICK_POINTS;
+            Brick brick = new Brick(body, animation, points, velocity, false);
+            cast.AddActor(Constants.BRICK_GROUP, brick);}
+            // for (int r = 0; r < rows.Count; r++)
+            // {
+            //     for (int c = 0; c < rows[r].Count; c++)
+            //     {   
+            //         int x = Constants.FIELD_RIGHT/3 +20+ c * Constants.BRICK_WIDTH;
+            //         int y = Constants.FIELD_TOP + r * Constants.BRICK_HEIGHT;2
 
-                    string color = rows[r][c][0].ToString();
-                    int frames = (int)Char.GetNumericValue(rows[r][c][1]);
-                    int points = Constants.BRICK_POINTS;
+            //         string color = rows[r][c][0].ToString();
+            //         int frames = (int)Char.GetNumericValue(rows[r][c][1]);
+            //         int points = Constants.BRICK_POINTS;
 
-                    Point position = new Point(x, y);
-                    Point size = new Point(Constants.BRICK_WIDTH, Constants.BRICK_HEIGHT);
-                    Point velocity = new Point(0, 0);
-                    List<string> images = Constants.Car_Images[color].GetRange(1, frames);
+            //         Point position = new Point(x, y);
+            //         Point size = new Point(Constants.BRICK_WIDTH, Constants.BRICK_HEIGHT);
+         //         Point velocity = new Point(0, 0);
+        //        List<string> images = Constants.Car_Images[color].GetRange(1, frames);
 
-                    Body body = new Body(position, size, velocity);
-                    Animation animation = new Animation(images, Constants.BRICK_RATE, 1);
+            //         Body body = new Body(position, size, velocity);
+            //         Animation animation = new Animation(images, Constants.BRICK_RATE, 1, null, null);
                     
-                    Brick brick = new Brick(body, animation, points, false);
-                    cast.AddActor(Constants.BRICK_GROUP, brick);
-                }
-            }
+            //         Brick brick = new Brick(body, animation, points, false);
+            //         cast.AddActor(Constants.BRICK_GROUP, brick);
+            //     }
+            // }
         }
         private void AddBackground(Cast cast){
             cast.ClearActors(Constants.BACKGROUND_GROUP);
@@ -206,7 +222,7 @@ namespace Unit06.Game.Directing
             Point velocity = new Point(5, 0);
         
             Body body = new Body(position, size, velocity);
-            Animation animation = new Animation(Constants.BACKGROUND_IMAGES, Constants.RACKET_RATE, 0);
+            Animation animation = new Animation(Constants.BACKGROUND_IMAGES, Constants.RACKET_RATE, 1, velocity, position);
             Background background = new Background(body, animation, false);
         
             cast.AddActor(Constants.BACKGROUND_GROUP, background);
@@ -261,7 +277,7 @@ namespace Unit06.Game.Directing
             Point velocity = new Point(0, 0);
         
             Body body = new Body(position, size, velocity);
-            Animation animation = new Animation(Constants.RACKET_IMAGES, Constants.RACKET_RATE, 0);
+            Animation animation = new Animation(Constants.RACKET_IMAGES, Constants.RACKET_RATE, 0, null, null);
             Racket racket = new Racket(body, animation, false);
         
             cast.AddActor(Constants.RACKET_GROUP, racket);

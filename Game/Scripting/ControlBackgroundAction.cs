@@ -16,6 +16,8 @@ namespace Unit06.Game.Scripting
         public void Execute(Cast cast, Script script, ActionCallback callback)
         {
             Background racket = (Background)cast.GetFirstActor(Constants.BACKGROUND_GROUP);
+            racket.MoveNext();
+            racket.SwingRight();
         }
 
         //     if (_keyboardService.IsKeyDown(Constants.LEFT))

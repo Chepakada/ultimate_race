@@ -16,7 +16,7 @@ namespace Unit06
 
         // SCREEN
         public static int SCREEN_WIDTH = 1880; //1080
-        public static int SCREEN_HEIGHT = 840; //680
+        public static int SCREEN_HEIGHT = 1000; //680
         public static int CENTER_X = SCREEN_WIDTH / 2;
         public static int CENTER_Y = SCREEN_HEIGHT / 2;
 
@@ -113,10 +113,11 @@ namespace Unit06
             };
             
         public static int Background_width = 1880;
-        public static int Background_Height = 880;
+        public static int Background_Height = 1000;
         public static string BACKGROUND_GROUP = "backgrounds";
         public static List<string> BACKGROUND_IMAGES 
             = new List<string>(){
+                "Assets/images/Background.png",
                 "Assets/images/Background.png"
             };
         

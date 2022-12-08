@@ -25,11 +25,12 @@ namespace Unit06.Game.Scripting
                 Point pos = rectangle.GetPosition();
                 _videoService.DrawRectangle(size, pos, Constants.PURPLE, false);
             }
-
+        
             Animation animation = racket.GetAnimation();
             Image image = animation.NextImage();
             Point position = body.GetPosition();
             _videoService.DrawImage(image, position);
+            
         }
     }
 }

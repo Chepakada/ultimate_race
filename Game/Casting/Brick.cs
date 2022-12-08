@@ -8,15 +8,17 @@ namespace Unit06.Game.Casting
         private Body _body;
         private Animation _animation;
         private int _points;
+        private Point _velocity;
 
         /// <summary>
         /// Constructs a new instance of Actor.
         /// </summary>
-        public Brick(Body body, Animation animation, int points, bool debug) : base(debug)
+        public Brick(Body body, Animation animation, int points, Point velocity, bool debug) : base(debug)
         {
             this._body = body;
             this._animation = animation;
             this._points = points;
+            this._velocity = velocity;
         }
 
         /// <summary>
