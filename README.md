@@ -21,7 +21,7 @@ the different scenes through elsapsed time, recognition of keys being pressed, a
 car an animation so that it's lights flash throughout the game. This is the class where we spawned the cars to come down in the game.
 # Collide Brick Action Class
 Since we changed our bricks to be the cars coming the opposite way of the player, we were able to keep the collisions the same.
-However, we made it so that if there was a collision with one of the cars/bricks, the game would reset and start a new leverl.
+However, we made it so that if there was a collision with one of the cars/bricks, the game would reset and start a new level.
 
 # Move Background Action Class
 This is wehere we gave the background a velocity so that the 2 images can be used to look like the road is moving. Since the images are bigger
