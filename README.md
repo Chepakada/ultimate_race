@@ -35,4 +35,7 @@ sounds for the game.
 
 # Maintainability
 We used maintainability by setting up branches so that we can see each other's commits to the program. We were able to keep the work organized and
-describe what the code was allowing to happen when we pushed our code to the branches. 
+describe what the code was allowing to happen when we pushed our code to the branches. Since this was a long term project of about 3 weeks, it was 
+helpful to use maintainability because we could look back at what was done and easily understand, even though we are working on other projects and 
+assignments this semester. We also avoided working on 1 branch until the end so that if mistakes were made and bugs in our code appeared, we would be able 
+to look back at the other teammember's codes and our previous commits so that we can get back to the code before the changes were made. This helps us to backtrack and find where the errors were made.
