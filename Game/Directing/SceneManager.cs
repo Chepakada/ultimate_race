@@ -49,6 +49,7 @@ namespace Unit06.Game.Directing
         private void PrepareNewGame(Cast cast, Script script)
         {   //AddBackground2(cast);
             AddBackground(cast);
+            AddTime(cast);
             AddStats(cast);
             AddLevel(cast);
             AddScore(cast);
@@ -64,10 +65,12 @@ namespace Unit06.Game.Directing
 
             ChangeSceneAction a = new ChangeSceneAction(KeyboardService, Constants.NEXT_LEVEL);
             script.AddAction(Constants.INPUT, a);
-
+            
             AddOutputActions(script);
             AddUnloadActions(script);
             AddReleaseActions(script);
+            PlaySoundAction sa = new PlaySoundAction(AudioService, Constants.START_GAME);
+            script.AddAction(Constants.OUTPUT, sa);
         }
 
         private void ActivateBall(Cast cast)
@@ -92,7 +95,7 @@ namespace Unit06.Game.Directing
 
             AddOutputActions(script);
 
-            PlaySoundAction sa = new PlaySoundAction(AudioService, Constants.WELCOME_SOUND);
+            PlaySoundAction sa = new PlaySoundAction(AudioService, Constants.START_GAME);
             script.AddAction(Constants.OUTPUT, sa);
         }
 
@@ -114,8 +117,10 @@ namespace Unit06.Game.Directing
         }
 
         private void PrepareInPlay(Cast cast, Script script)
-        {
+        {   
+            PlaySoundAction sa = new PlaySoundAction(AudioService, Constants.START_GAME);
             ActivateBall(cast);
+            script.AddAction(Constants.OUTPUT, sa);
             cast.ClearActors(Constants.DIALOG_GROUP);
 
             script.ClearAllActions();
@@ -125,6 +130,7 @@ namespace Unit06.Game.Directing
 
             AddUpdateActions(script);    
             AddOutputActions(script);
+            
         
         }
 
@@ -165,10 +171,19 @@ namespace Unit06.Game.Directing
         
             cast.AddActor(Constants.BALL_GROUP, ball);
         }
-
+        private void AddTime(Cast cast){
+            cast.ClearActors(Constants.TIME_GROUP);
+            Text text = new Text(Constants.TIME_FORMAT, Constants.FONT_FILE, Constants.FONT_SIZE, 9+ Constants.ALIGN_CENTER, Constants.WHITE);
+            Point position = new Point(Constants.CENTER_X, Constants.HUD_MARGIN);
+            Label label = new Label(text, position);
+            cast.AddActor(Constants.TIME_GROUP, label);
+        }
         private void AddBricks(Cast cast)
         {
             cast.ClearActors(Constants.BRICK_GROUP);
+
+            
+
 
             Stats stats = (Stats)cast.GetFirstActor(Constants.STATS_GROUP);
             int level = stats.GetLevel() % Constants.BASE_LEVELS;
@@ -177,11 +192,11 @@ namespace Unit06.Game.Directing
             
             Random _random = new Random();
             
-            List<string> images = Constants.Car_Images["c"].GetRange(1,4);
+            List<string> images = Constants.Car_Images["c"].GetRange(1,5);
             foreach (string image in images){
             int location = _random.Next(0,4);
-            int x = Constants.FIELD_LEFT + 400 + _random.Next(0, 4)*Constants.BRICK_WIDTH;
-            int y = Constants.FIELD_TOP + 50+ _random.Next(0,4)*Constants.BRICK_HEIGHT;
+            int x = Constants.FIELD_LEFT + 470 + _random.Next(0, 8)*(Constants.BRICK_WIDTH+20);
+            int y = Constants.FIELD_TOP + _random.Next(0,2)*Constants.BRICK_HEIGHT-_random.Next(0, 100);
             Point position = new Point(x, y);
             
             Point size = new Point(Constants.BRICK_WIDTH, Constants.BRICK_HEIGHT);

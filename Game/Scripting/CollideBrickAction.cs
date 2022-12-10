@@ -33,6 +33,8 @@ namespace Unit06.Game.Scripting
                 if (_physicsService.HasCollided(brickBody, ballBody))
                 {
                     cast.RemoveActor(Constants.RACKET_GROUP, ball);
+                    cast.RemoveActor(Constants.BRICK_GROUP, brick);
+                    //cast.AddActor(Constants.BRICK_GROUP, brick);
                 
                 //     Sound sound = new Sound(Constants.BOUNCE_SOUND);
                 //     _audioService.PlaySound(sound);
