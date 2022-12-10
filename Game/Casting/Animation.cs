@@ -101,6 +101,7 @@ namespace Unit06.Game.Casting
         }
         
         public Image NextImageForCars(){
+            Random random = new Random();
             string filename = _images[_index];
             Image image = new Image(filename);
             // //Point newPosition = _position.Add(_velocity);

@@ -32,8 +32,9 @@ namespace Unit06
 
         // SOUND
         public static string BOUNCE_SOUND = "Assets/Sounds/boing.wav";
-        public static string WELCOME_SOUND = "Assets/Sounds/start.wav";
+        public static string WELCOME_SOUND = "Assets/Sounds/Title.wav";
         public static string OVER_SOUND = "Assets/Sounds/over.wav";
+        public static string START_GAME = "Assets/Sounds/song1.wav";
 
         // TEXT
         public static int ALIGN_LEFT = 0;
@@ -83,17 +84,22 @@ namespace Unit06
 
         // STATS
         public static string STATS_GROUP = "stats";
-        public static int DEFAULT_LIVES = 3;
+        public static int DEFAULT_LIVES = 1;
         public static int MAXIMUM_LIVES = 5;
+        public static double DEFAULT_TIME = 0;
+    
 
         // HUD
         public static int HUD_MARGIN = 15;
         public static string LEVEL_GROUP = "level";
         public static string LIVES_GROUP = "lives";
         public static string SCORE_GROUP = "score";
+        public static string TIME_GROUP = "time";
         public static string LEVEL_FORMAT = "LEVEL: {0}";
         public static string LIVES_FORMAT = "LIVES: {0}";
+        public static string TIME_FORMAT = "Time: {0}";
         public static string SCORE_FORMAT = "Time: {0}";
+        
 
         // BALL
         public static string BALL_GROUP = "balls";
@@ -125,8 +131,8 @@ namespace Unit06
             };
         
 
-        public static int RACKET_WIDTH = 100;
-        public static int RACKET_HEIGHT = 210;
+        public static int RACKET_WIDTH = 80;
+        public static int RACKET_HEIGHT = 246;
         public static int RACKET_RATE = 6;
         public static int RACKET_VELOCITY = 7;
 
@@ -192,8 +198,8 @@ namespace Unit06
             }}
         };
 
-        public static int BRICK_WIDTH = 100;
-        public static int BRICK_HEIGHT = 210;
+        public static int BRICK_WIDTH = 80;
+        public static int BRICK_HEIGHT = 246;
         public static double BRICK_DELAY = 0.5;
         public static int BRICK_RATE = 4;
         public static int BRICK_POINTS = 50;

@@ -1,3 +1,4 @@
+using System;
 namespace Unit06.Game.Casting
 {
     /// <summary>
@@ -8,16 +9,18 @@ namespace Unit06.Game.Casting
         private int _level;
         private int _lives;
         private int _score;
+        private double _time;
 
         /// <summary>
         /// Constructs a new instance of Actor.
         /// </summary>
-        public Stats(int level = 1, int lives = 3, int score = 0, 
+        public Stats(int level = 1, int lives = 1, int score = 0, int time = 0,
                 bool debug = false) : base(debug)
         {
             this._level = level;
             this._lives = lives;
             this._score = score;
+            this._time = time;
         }
 
         /// <summary>
@@ -82,6 +85,14 @@ namespace Unit06.Game.Casting
             {
                 _lives = 0;
             }
+        }
+
+        public double GetTime(){
+            if (_time>= 0){
+                _time = _time + .02;
+                _time = Math.Round(_time, 4, MidpointRounding.AwayFromZero);
+            }
+            return _time;
         }
         
     }
