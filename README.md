@@ -3,8 +3,7 @@ This repository contains the code for a simple car racing game for CSE 210 final
 This is a game where the player will control the police car using the left and right arrow keys.
 Throughout the game, cars will be coming down the opposite way. When you collide with or hit another car,
 you will lose a life. You have a total of three lives.
-
-# We started with the racket game from Unit 06 Articulate.
+We started with the racket game from Unit 06 Articulate.
 
 # Background Class
 The background has been changed to a highway scenery. The image is larger than the game's screen, so
