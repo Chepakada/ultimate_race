@@ -26,7 +26,8 @@ This is wehere we gave the background a velocity so that the 2 images can be use
 
 # Constants Class
 We changed the height and width of the screen so that we wouldn't need to change the size of all the cars. By doing this we saved
-a lot of time. This is also where we called and changed our images for cars instead of blocks.
+a lot of time. This is also where we called and changed our images for cars instead of blocks. This is also where we changed the 
+sounds for the game.
 
 # These are the main changes that we made to the Unit 06 Articulate
 We kept parts of the code the same, but the classes above are where the majority of the chagnes were made.
