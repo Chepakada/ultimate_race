@@ -18,25 +18,40 @@ namespace Unit06.Game.Scripting
 
         public void Execute(Cast cast, Script script, ActionCallback callback)
         {
-            Ball ball = (Ball)cast.GetFirstActor(Constants.BALL_GROUP);
+            Racket ball = (Racket)cast.GetFirstActor(Constants.RACKET_GROUP);
             List<Actor> bricks = cast.GetActors(Constants.BRICK_GROUP);
             Stats stats = (Stats)cast.GetFirstActor(Constants.STATS_GROUP);
+            Sound overSound = new Sound(Constants.OVER_SOUND);
             
             foreach (Actor actor in bricks)
             {
                 Brick brick = (Brick)actor;
+                
                 Body brickBody = brick.GetBody();
                 Body ballBody = ball.GetBody();
 
                 if (_physicsService.HasCollided(brickBody, ballBody))
                 {
-                    ball.BounceY();
+                    cast.RemoveActor(Constants.RACKET_GROUP, ball);
+                
                 //     Sound sound = new Sound(Constants.BOUNCE_SOUND);
                 //     _audioService.PlaySound(sound);
                 //     int points = brick.GetPoints();
                 //     stats.AddPoints(points);
                 //     cast.RemoveActor(Constants.BRICK_GROUP, brick);
                 // }
+                //Stats stats = (Stats)cast.GetFirstActor(Constants.STATS_GROUP);
+                stats.RemoveLife();
+
+                if (stats.GetLives() > 0)
+                {
+                    callback.OnNext(Constants.TRY_AGAIN);
+                }
+                else
+                {
+                    callback.OnNext(Constants.GAME_OVER);
+                    _audioService.PlaySound(overSound);
+                }
                 }
             }
         }

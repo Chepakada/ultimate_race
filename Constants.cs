@@ -115,6 +115,9 @@ namespace Unit06
         public static int Background_width = 1880;
         public static int Background_Height = 1000;
         public static string BACKGROUND_GROUP = "backgrounds";
+
+        public static int NUMBER_SIDE_SLIDES = 2;
+        public static string SIDES_IMAGE = "Assets/images/Background.png";
         public static List<string> BACKGROUND_IMAGES 
             = new List<string>(){
                 "Assets/images/Background.png",

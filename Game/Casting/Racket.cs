@@ -50,18 +50,27 @@ namespace Unit06.Game.Casting
         /// Swings the racket to the left.
         /// </summary>
         public void SwingLeft()
-        {
+        {   Point position = _body.GetPosition();
+            Point leftlimit = new Point(450,0);
             Point velocity = new Point(-Constants.RACKET_VELOCITY, 0);
-            _body.SetVelocity(velocity);
+            Point rest = new Point(0,0);
+            if (position.GetX()>leftlimit.GetX()){
+            _body.SetVelocity(velocity);}
+            else{ _body.SetVelocity(rest);}
+            
         }
 
         /// <summary>
         /// Swings the racket to the right.
         /// </summary>
         public void SwingRight()
-        {
+        {   Point position = _body.GetPosition();
+            Point rightlimit = new Point(1200,0);
+            Point rest = new Point(0,0);
             Point velocity = new Point(Constants.RACKET_VELOCITY, 0);
-            _body.SetVelocity(velocity);
+            if (position.GetX()<rightlimit.GetX()){
+            _body.SetVelocity(velocity);}
+            else {_body.SetVelocity(rest);}
         }
 
         /// <summary>

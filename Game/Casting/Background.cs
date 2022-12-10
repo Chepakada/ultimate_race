@@ -8,13 +8,13 @@ namespace Unit06.Game.Casting
     public class Background : Actor
     {
         private Body _body;
-        private Animation _animation;
+        private Image _animation;
         private static Random _random = new Random();
     
         /// <summary>
         /// Constructs a new instance of Actor.
         /// </summary>
-        public Background(Body body, Animation animation, bool debug) : base(debug)
+        public Background(Body body, Image animation, bool debug) : base(debug)
         {
             this._body = body;
             this._animation = animation;
@@ -24,7 +24,7 @@ namespace Unit06.Game.Casting
         /// Gets the animation.
         /// </summary>
         /// <returns>The animation.</returns>
-        public Animation GetAnimation()
+        public Image GetImage()
         {
             return _animation;
         }
