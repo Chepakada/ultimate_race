@@ -15,7 +15,7 @@ The brick class has been modified to hold the cars coming the opposite way. They
 # Scene Manager Class
 Our scene manager is where we draw all of our images and set the game up to be played. This is where we switch between
 the different scenes through elsapsed time and recognition of keys being pressed. We were also able to give our police
-car an animation so that it's lights flash throughout the game.
+car an animation so that it's lights flash throughout the game. This is also where we spawned the cars to come down in the game.
 
 # Collide Brick Action Class
 Since we changed our bricks to be the cars coming the opposite way of the player, we were able to keep the collisions the same.
