@@ -47,7 +47,7 @@ namespace Unit06.Game.Directing
         }
 
         private void PrepareNewGame(Cast cast, Script script)
-        {   AddBackground2(cast);
+        {   //AddBackground2(cast);
             AddBackground(cast);
             AddStats(cast);
             AddLevel(cast);
@@ -80,7 +80,7 @@ namespace Unit06.Game.Directing
         {
             AddBall(cast);
             AddBackground(cast);
-            AddBackground2(cast);
+            //AddBackground2(cast);
             AddBricks(cast);
             AddRacket(cast);
             AddDialog(cast, Constants.PREP_TO_LAUNCH);
@@ -100,7 +100,7 @@ namespace Unit06.Game.Directing
         {
             AddBall(cast);
             AddBackground(cast);
-            AddBackground2(cast);
+            //AddBackground2(cast);
             AddRacket(cast);
             AddDialog(cast, Constants.PREP_TO_LAUNCH);
 
@@ -132,7 +132,7 @@ namespace Unit06.Game.Directing
         {
             AddBall(cast);
             AddBackground(cast);
-            AddBackground2(cast);
+            //AddBackground2(cast);
             AddRacket(cast);
             AddDialog(cast, Constants.WAS_GOOD_GAME);
 
@@ -180,7 +180,7 @@ namespace Unit06.Game.Directing
             List<string> images = Constants.Car_Images["c"].GetRange(1,4);
             foreach (string image in images){
             int location = _random.Next(0,4);
-            int x = Constants.FIELD_LEFT + 400 + _random.Next(0, 4)*2*Constants.BRICK_WIDTH;
+            int x = Constants.FIELD_LEFT + 400 + _random.Next(0, 4)*Constants.BRICK_WIDTH;
             int y = Constants.FIELD_TOP + 50+ _random.Next(0,4)*Constants.BRICK_HEIGHT;
             Point position = new Point(x, y);
             
@@ -217,41 +217,81 @@ namespace Unit06.Game.Directing
             //     }
             // }
         }
-        private void AddBackground(Cast cast){
-            cast.ClearActors(Constants.BACKGROUND_GROUP);
+        // private void AddBackground(Cast cast){
+        //     cast.ClearActors(Constants.BACKGROUND_GROUP);
         
-            int x = 0;
-            int y = 0;
+        //     int x = 0;
+        //     int y = 0;
         
-            Point position = new Point(x, y);
-            Point size = new Point(Constants.Background_Height, Constants.Background_width);
-            Point velocity = new Point(0, 5);
+        //     Point position = new Point(x, y);
+        //     Point size = new Point(Constants.Background_Height, Constants.Background_width);
+        //     Point velocity = new Point(0, 5);
         
-            Body body = new Body(position, size, velocity);
-            Animation animation = new Animation(Constants.BACKGROUND_IMAGES, Constants.RACKET_RATE, 1, velocity, position);
-            Background background = new Background(body, animation, false);
+        //     Body body = new Body(position, size, velocity);
+        //     Animation animation = new Animation(Constants.BACKGROUND_IMAGES, Constants.RACKET_RATE, 1, velocity, position);
+        //     Background background = new Background(body, animation, false);
         
-            cast.AddActor(Constants.BACKGROUND_GROUP, background);
+        //     cast.AddActor(Constants.BACKGROUND_GROUP, background);
             
 
-        }
-         private void AddBackground2(Cast cast){
-            cast.ClearActors(Constants.BACKGROUND_GROUP);
-        
-            int x = 0;
-            int y = 500;
-        
-            Point position = new Point(x, y);
-            Point size = new Point(Constants.Background_Height, Constants.Background_width);
-            Point velocity = new Point(0, 5);
-        
-            Body body = new Body(position, size, velocity);
-            Animation animation = new Animation(Constants.BACKGROUND_IMAGES, Constants.RACKET_RATE, 1, velocity, position);
-            Background background = new Background(body, animation, false);
-        
-            cast.AddActor(Constants.BACKGROUND_GROUP, background);
+        // }
+         private void AddBackground(Cast cast)
+
+        {
+
+            for (int i = 0; i < Constants.NUMBER_SIDE_SLIDES; i++)
+
+            {
+
+                int x = 0;//Constants.CENTER_X - Constants.SIDE_WIDTH / 2;
+
+                int y = i * -Constants.SCREEN_HEIGHT;//Constants.SCREEN_HEIGHT - Constants.SIDE_HEIGHT - Constants.SIDE_HEIGHT; //maybe +1 in y
+
+
+
+                Point position = new Point(x, y);
+
+                Point size = new Point(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+
+                Point velocity = new Point(0, 5);
+
+
+
+                Body body = new Body(position, size, velocity);
+
+                Image image = new Image(Constants.SIDES_IMAGE);
+
+                Background side = new Background(body, image, false);
+
+
+
+                cast.AddActor(Constants.BACKGROUND_GROUP, side);
+
+            }
+
+
+
+
+
 
         }
+        //  private void AddBackground2(Cast cast){
+        //     cast.ClearActors(Constants.BACKGROUND_GROUP);
+        
+        //     int x = 0;
+        //     int y = 500;
+        
+        //     Point position = new Point(x, y);
+        //     Point size = new Point(Constants.Background_Height, Constants.Background_width);
+        //     Point velocity = new Point(0, 5);
+        
+        //     Body body = new Body(position, size, velocity);
+        //     Animation animation = new Animation(Constants.BACKGROUND_IMAGES, Constants.RACKET_RATE, 1, velocity, position);
+        //     Background background = new Background(body, animation, false);
+        
+        //     cast.AddActor(Constants.BACKGROUND_GROUP, background);
+
+        // }
         private void AddDialog(Cast cast, string message)
         {
             cast.ClearActors(Constants.DIALOG_GROUP);
@@ -360,7 +400,7 @@ namespace Unit06.Game.Directing
         }
 
         private void AddOutputActions(Script script)
-        {   script.AddAction(Constants.OUTPUT, new DrawBackGroundAction(VideoService));
+        {   script.AddAction(Constants.OUTPUT, new DrawSidesAction(VideoService));
             script.AddAction(Constants.OUTPUT, new StartDrawingAction(VideoService));
             script.AddAction(Constants.OUTPUT, new DrawRacketAction(VideoService));
             script.AddAction(Constants.OUTPUT, new DrawHudAction(VideoService));
@@ -384,11 +424,11 @@ namespace Unit06.Game.Directing
         }
 
         private void AddUpdateActions(Script script)
-        {   
+        {   script.AddAction(Constants.UPDATE, new MoveSidesAction());
             script.AddAction(Constants.UPDATE, new MoveBallAction());
             script.AddAction(Constants.UPDATE, new MoveBrickAction());
             script.AddAction(Constants.UPDATE, new MoveRacketAction());
-            script.AddAction(Constants.UPDATE, new MoveSidesAction());
+           
             script.AddAction(Constants.UPDATE, new CollideBordersAction(PhysicsService, AudioService));
             script.AddAction(Constants.UPDATE, new CollideBrickAction(PhysicsService, AudioService));
             script.AddAction(Constants.UPDATE, new CollideRacketAction(PhysicsService, AudioService));
