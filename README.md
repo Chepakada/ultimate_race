@@ -22,7 +22,7 @@ It was written in C# using raylib library.
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
+
 * Add more levels with different maps
 * Make the sound effect better
 * Be able to authorize and save cache for future login
