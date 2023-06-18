@@ -16,7 +16,7 @@ It was written in C# using raylib library.
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
+
 * [C# Documentation](https://learn.microsoft.com/en-us/dotnet/csharp/)
 * [C-sharpCorner](https://www.c-sharpcorner.com/article/c-sharp-list/)
 
